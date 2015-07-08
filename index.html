@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple wakeful client example</title>
+    <!-- <script type="text/javascript" src="http://coati.encorelab.org:7890/faye/client.js"></script> -->
+    <!-- // <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    // <script type="text/javascript" src="./skeletor.js"></script>
+    // <script type="text/javascript" src="./app.js"></script> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1 user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../bower_components/jquery-toastmessage-plugin/src/main/resources/css/jquery.toastmessage.css" rel="stylesheet">
+
+    <link href='///fonts.googleapis.com/css?family=Open+Sans:300italic,400,600' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../node_modules/underscore/underscore.js"></script>
+    <script type="text/javascript" src="../node_modules/backbone/backbone.js"></script>
+
+    <script type="text/javascript" src="../node_modules/backbone.drowsy.encorelab/backbone.drowsy.js"></script>
+    <script type="text/javascript" src="../node_modules/backbone.drowsy.encorelab/wakeful.js"></script>
+
+    <script type="text/javascript" src="../bower_components/jquery-toastmessage-plugin/src/main/javascript/jquery.toastmessage.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../bower_components/purl/purl.js"></script>
+
+    <script type="text/javascript" src="./js/skeletor.js"></script>
+    <script type="text/javascript" src="./js/model.js"></script>
+    <script type="text/javascript" src="./js/view.js"></script>
+    <script type="text/javascript" src="./js/router.js"></script>
+    <!-- <script type="text/javascript" src="./js/rollcall.js"></script> -->
+
+    <script type="text/javascript" src="./js/app.js"></script>
+</head>
+<body>
+    <div>
+        <form id="messageForm">
+            <fieldset>
+                <label for="messageText">Enter a message to send</label>
+                <input id="messageText" type="text" autofocus>
+            </fieldset>
+            <button type="submit" name="messageSend" value="messageSend">Send message</button>
+        </form>
+        <li id="messages">
+
+        </li>
+    </div>
+
+    <script type="text/javascript">
+        // jQuery(document).ready(function() {
+        //   Skeletor.Mobile.init();
+        // });
+        jQuery(document).ready(function () {
+            // Skeletor.Smartboard.init();
+            Skeletor.Mobile.Router.start();
+        });
+    </script>
+</body>
+</html>
