@@ -1,2 +1,2 @@
 # wakeful-example
-A simple wakeful usage example
+Wakeful example using the Faye enhanced backbone.js library
