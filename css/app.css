@@ -1,0 +1,27 @@
+/*
+ * Modification of http://callmenick.com/post/various-css-input-text-styles
+ */
+input[type="text"] {
+  /*display: block;*/
+  margin: 0;
+  /*width: 100%;*/
+  /*font-family: sans-serif;*/
+  /*font-size: 18px;*/
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+
+#messageForm input[type="text"] {
+  padding: 10px;
+  border: solid 5px #c9c9c9;
+  transition: border 0.3s;
+}
+#messageForm input[type="text"]:focus,
+#messageForm input[type="text"].focus {
+  border: solid 5px #969696;
+}
+

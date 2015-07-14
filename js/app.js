@@ -8,9 +8,9 @@
 
   // app.config = null;
 
-
   app.runState = null;
   app.chatMessages = null;
+  app.chatView = null;
 
   app.init = function() {
     var DATABASE = app.config.drowsy.db;
@@ -32,7 +32,9 @@
     console.log("Ready function");
     // now the models are initialized and we can get ready with the rest of the app
 
-    // here we make the collection of chatMessages available in a variable that is visible withing this module
+    wireUpViews();
+
+    // here we make the collection of chatMessages available in a variable that is visible within this module
     app.chatMessages = Skeletor.Model.awake.chat_messages;
 
     // make UI react to user interaction
@@ -49,6 +51,7 @@
         console.log('Message saved!');
         // clear the input field
         jQuery('#messageText').val('');
+        Skeletor.Model.awake.chat_messages.add(chatMessage);
       }, function(error) {
         alert('There was a problem: ' + error.message);
       });
@@ -56,16 +59,33 @@
     });
   };
 
-  app.subscribeToChannel = function (streamName) {
-    var subscription = app.client.subscribe(streamName, function(jsonMessage) {
-      var message = JSON.parse(jsonMessage);
-      // handle message
-      console.log(message);
-      var msgList = jQuery('#messages');
-      var msgItem = jQuery('<li>'+message.text+'</li>');
-      msgList.append(msgItem);
-    });
+  // app.subscribeToChannel = function (streamName) {
+  //   var subscription = app.client.subscribe(streamName, function(jsonMessage) {
+  //     var message = JSON.parse(jsonMessage);
+  //     // handle message
+  //     console.log(message);
+  //     var msgList = jQuery('#chat-messages');
+  //     var msgItem = jQuery('<li>'+message.text+'</li>');
+  //     msgList.append(msgItem);
+  //   });
 
+  // };
+
+  var wireUpViews = function() {
+    /* ======================================================
+     * Setting up the Backbone Views to render data
+     * coming from Collections and Models.
+     * This also takes care of making the nav items clickable,
+     * so these can only be called when everything is set up
+     * ======================================================
+     */
+
+     if (app.chatView === null) {
+       app.chatsView = new app.View.ChatsView({
+         el: '#chat-messages',
+         collection: Skeletor.Model.awake.chat_messages
+       });
+     }
   };
 
   // this.Skeletor.Mobile = app;

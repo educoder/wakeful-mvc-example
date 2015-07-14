@@ -27,7 +27,7 @@
   Skeletor.Model = (function() {
     function Model() {}
 
-    Model.requiredCollections = ['chat_messages'];
+    Model.requiredCollections = ['chat_messages', 'states'];
 
     Model.init = function(url, db) {
       var dfrInit,
