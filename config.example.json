@@ -1,0 +1,12 @@
+{
+    "drowsy": {
+        "url": "http://localhost:9292",
+        "db": "mvc-example",
+        "username":"drowsy user name",
+        "password":"drowsy password"
+    },
+    "wakeful": {
+        "url": "http://localhost:7777/faye"
+    },
+    "project_name": "Wakeful MVC example"
+}
