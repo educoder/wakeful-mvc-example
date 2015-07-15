@@ -17,13 +17,13 @@
     // events: {
     //   //'click #nav-read-btn'               : 'switchToReadView'
     // },
-    template: _.template('<p class="triangle-border left"><%= text %></p>'),
+    template: _.template('<p class="triangle-border <%= ownMsg ? "left" : "right" %>"><%= text %></p>'),
     initialize: function() {
       this.model.on('change', this.render, this);
     },
 
     render: function () {
-      return this.template ({text: this.model.get('text')});
+      return this.template ({text: this.model.get('text'), ownMsg: (this.model.get('author') === app.username) ? true : false});
     },
 
     remove: function() {

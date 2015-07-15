@@ -19,7 +19,8 @@
   app.Router = new (Backbone.Router.extend({
     routes: {
       '' : 'index',
-      'chat': 'initChat'
+      'login/:username': 'handleLogin',
+      'chat/:username': 'initChat'
     },
     initialize: function() {
       app.loadConfig('../config.json');
@@ -38,13 +39,24 @@
     },
     index: function() {
       console.log("routing on");
-      jQuery('.control').hide();
-      jQuery('.orientation').show();
+      // load the actual static HTML from a template
+      var el = _.template(jQuery('#login-template').text(), {});
+      jQuery('#app').html(el);
+
+      jQuery( "#loginForm" ).submit(function( event ) {
+        event.preventDefault();
+        // retrieve username and call login route
+        app.Router.navigate("login/" + jQuery('#userName').val(), {trigger: true});
+      });
     },
-    initChat: function () {
-      Skeletor.Mobile.init();
-      jQuery('.orientation').hide();
-      jQuery('.control').show();
+    handleLogin: function (username) {
+      // Store login in cookie
+      jQuery.cookie('wakeful_mvc_example_username', username, { expires: 1, path: '/' });
+      app.Router.navigate("chat/" + username, {trigger: true});
+    },
+    initChat: function (username) {
+      // Call the function that will do all the setup work
+      Skeletor.Mobile.init(username);
     },
     start: function() {
       // to allow single page app with various routes
